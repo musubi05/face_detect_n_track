@@ -1,8 +1,8 @@
 #pragma once
 
-#include <opencv2\core.hpp>
-#include <opencv2\highgui\highgui.hpp>
-#include <opencv2\objdetect\objdetect.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/objdetect/objdetect.hpp>
 
 class VideoFaceDetector
 {
@@ -42,6 +42,9 @@ private:
     int                     m_resizedWidth = 320;
     cv::Point               m_facePosition;
     double                  m_templateMatchingMaxDuration = 3;
+    double                  m_scaleFactor = 1.11;
+    int                  m_minNeighbors = 6;
+
 
     cv::Rect    doubleRectSize(const cv::Rect &inputRect, const cv::Rect &frameSize) const;
     cv::Rect    biggestFace(std::vector<cv::Rect> &faces) const;

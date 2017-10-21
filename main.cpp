@@ -1,5 +1,5 @@
-#include <opencv2\highgui\highgui.hpp>
-#include <opencv2\imgproc\imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 
 #include "VideoFaceDetector.h"
 
@@ -19,6 +19,7 @@ int main(int argc, char** argv)
 	cv::namedWindow(WINDOW_NAME, cv::WINDOW_KEEPRATIO | cv::WINDOW_AUTOSIZE);
 
 	VideoFaceDetector detector(CASCADE_FILE, camera);
+	detector.setTemplateMatchingMaxDuration(1);
 	cv::Mat frame;
 	double fps = 0, time_per_frame;
 	while (true)

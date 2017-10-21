@@ -1,6 +1,6 @@
 #include "VideoFaceDetector.h"
 #include <iostream>
-#include <opencv2\imgproc.hpp>
+#include <opencv2/imgproc.hpp>
 
 const double VideoFaceDetector::TICK_FREQUENCY = cv::getTickFrequency();
 
@@ -156,7 +156,7 @@ void VideoFaceDetector::detectFaceAllSizes(const cv::Mat &frame)
 {
     // Minimum face size is 1/5th of screen height
     // Maximum face size is 2/3rds of screen height
-    m_faceCascade->detectMultiScale(frame, m_allFaces, 1.1, 3, 0,
+    m_faceCascade->detectMultiScale(frame, m_allFaces, m_scaleFactor, m_minNeighbors, 0,
         cv::Size(frame.rows / 5, frame.rows / 5),
         cv::Size(frame.rows * 2 / 3, frame.rows * 2 / 3));
 
@@ -180,7 +180,7 @@ void VideoFaceDetector::detectFaceAllSizes(const cv::Mat &frame)
 void VideoFaceDetector::detectFaceAroundRoi(const cv::Mat &frame)
 {
     // Detect faces sized +/-20% off biggest face in previous search
-    m_faceCascade->detectMultiScale(frame(m_faceRoi), m_allFaces, 1.1, 3, 0,
+    m_faceCascade->detectMultiScale(frame(m_faceRoi), m_allFaces, m_scaleFactor, m_minNeighbors, 0,
         cv::Size(m_trackedFace.width * 8 / 10, m_trackedFace.height * 8 / 10),
         cv::Size(m_trackedFace.width * 12 / 10, m_trackedFace.width * 12 / 10));
 
