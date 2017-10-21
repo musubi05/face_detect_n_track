@@ -4,7 +4,7 @@
 #include "VideoFaceDetector.h"
 
 const cv::String    WINDOW_NAME("Camera video");
-const cv::String    CASCADE_FILE("haarcascade_frontalface_default.xml");
+const cv::String    CASCADE_FILE("haarcascade_frontalface_alt2.xml");
 
 int main(int argc, char** argv)
 {
